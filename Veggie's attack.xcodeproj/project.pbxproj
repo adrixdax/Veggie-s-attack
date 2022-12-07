@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		737C509A293F8D510016ACA6 /* Menu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 737C5099293F8D510016ACA6 /* Menu.sks */; };
+		73C5E0F72940E49600F9CD52 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5E0F62940E49600F9CD52 /* Menu.swift */; };
 		73CADABF293F760E00580330 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CADABE293F760E00580330 /* AppDelegate.swift */; };
 		73CADAC1293F760E00580330 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 73CADAC0293F760E00580330 /* GameScene.sks */; };
 		73CADAC3293F760E00580330 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 73CADAC2293F760E00580330 /* Actions.sks */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		737C5099293F8D510016ACA6 /* Menu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Menu.sks; sourceTree = "<group>"; };
+		73C5E0F62940E49600F9CD52 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		73CADABB293F760E00580330 /* Veggie's attack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Veggie's attack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		73CADABE293F760E00580330 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73CADAC0293F760E00580330 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -43,6 +47,7 @@
 		73CADAB2293F760E00580330 = {
 			isa = PBXGroup;
 			children = (
+				73C5E0F62940E49600F9CD52 /* Menu.swift */,
 				73CADABD293F760E00580330 /* Veggie's attack */,
 				73CADABC293F760E00580330 /* Products */,
 			);
@@ -61,6 +66,7 @@
 			children = (
 				73CADABE293F760E00580330 /* AppDelegate.swift */,
 				73CADAC0293F760E00580330 /* GameScene.sks */,
+				737C5099293F8D510016ACA6 /* Menu.sks */,
 				73CADAC2293F760E00580330 /* Actions.sks */,
 				73CADAC4293F760E00580330 /* GameScene.swift */,
 				73CADAC6293F760E00580330 /* GameViewController.swift */,
@@ -129,6 +135,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				737C509A293F8D510016ACA6 /* Menu.sks in Resources */,
 				73CADACA293F760E00580330 /* Main.storyboard in Resources */,
 				73CADAC1293F760E00580330 /* GameScene.sks in Resources */,
 				73CADACC293F760F00580330 /* Assets.xcassets in Resources */,
@@ -146,6 +153,7 @@
 			files = (
 				73CADAC5293F760E00580330 /* GameScene.swift in Sources */,
 				73CADAC7293F760E00580330 /* GameViewController.swift in Sources */,
+				73C5E0F72940E49600F9CD52 /* Menu.swift in Sources */,
 				73CADABF293F760E00580330 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,8 +307,9 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,6 +317,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.proteina.Veggie-s-attack";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -327,8 +339,9 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -336,6 +349,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.proteina.Veggie-s-attack";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
