@@ -22,7 +22,7 @@ class MyScene: SKScene {
     override func didMove(to view: SKView) {
         
         player = childNode(withName: "player")
-        joystick = childNode(withName: "joystick")
+        joystick = childNode(withName: "arrow")
         joystickKnob = joystick?.childNode(withName: "knob")
     
     }
@@ -35,6 +35,7 @@ extension MyScene{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
       
         for touch in touches {
+            print("\(touch.timestamp)")
             if let joystickKnob = joystickKnob{
                 let location = touch.location(in: joystick!)
                 joystickAction = joystickKnob.frame.contains(location)
@@ -50,6 +51,8 @@ extension MyScene{
         
         for touch in touches{
             let position = touch.location(in: joystick)
+            
+            print("\(position)")
             
             let lenght = sqrt(pow(position.y,2) + pow(position.x,2))
             let angle = atan2(position.y,position.x)
