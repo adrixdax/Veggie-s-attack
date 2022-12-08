@@ -1,18 +1,16 @@
 //
-//  GameScene.swift
+//  MyScene.swift
 //  Veggie's attack
 //
-//  Created by Adriano d'Alessandro on 06/12/22.
+//  Created by Michele Zurlo on 08/12/22.
 //
 
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class MyScene: SKScene {
     
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
-    
+
     var player: SKNode?
     var joystick: SKNode?
     var joystickKnob: SKNode?
@@ -29,12 +27,10 @@ class GameScene: SKScene {
     
     }
     
-
-   
 }
 
 
-extension GameScene{
+extension MyScene{
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
       

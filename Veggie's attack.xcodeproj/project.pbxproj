@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04D169CA294250E0001EDDC0 /* MyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 04D169C9294250E0001EDDC0 /* MyScene.sks */; };
+		04D169CC29425168001EDDC0 /* MyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D169CB29425168001EDDC0 /* MyScene.swift */; };
 		737C509A293F8D510016ACA6 /* Menu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 737C5099293F8D510016ACA6 /* Menu.sks */; };
 		73CADABF293F760E00580330 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CADABE293F760E00580330 /* AppDelegate.swift */; };
-		73CADAC1293F760E00580330 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 73CADAC0293F760E00580330 /* GameScene.sks */; };
 		73CADAC3293F760E00580330 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 73CADAC2293F760E00580330 /* Actions.sks */; };
-		73CADAC5293F760E00580330 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CADAC4293F760E00580330 /* GameScene.swift */; };
 		73CADAC7293F760E00580330 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CADAC6293F760E00580330 /* GameViewController.swift */; };
 		73CADACA293F760E00580330 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73CADAC8293F760E00580330 /* Main.storyboard */; };
 		73CADACC293F760F00580330 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73CADACB293F760F00580330 /* Assets.xcassets */; };
@@ -19,12 +19,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04D169C9294250E0001EDDC0 /* MyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyScene.sks; sourceTree = "<group>"; };
+		04D169CB29425168001EDDC0 /* MyScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScene.swift; sourceTree = "<group>"; };
 		737C5099293F8D510016ACA6 /* Menu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Menu.sks; sourceTree = "<group>"; };
 		73CADABB293F760E00580330 /* Veggie's attack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Veggie's attack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		73CADABE293F760E00580330 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		73CADAC0293F760E00580330 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		73CADAC2293F760E00580330 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		73CADAC4293F760E00580330 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		73CADAC6293F760E00580330 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		73CADAC9293F760E00580330 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		73CADACB293F760F00580330 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,14 +62,14 @@
 			isa = PBXGroup;
 			children = (
 				73CADABE293F760E00580330 /* AppDelegate.swift */,
-				73CADAC0293F760E00580330 /* GameScene.sks */,
 				737C5099293F8D510016ACA6 /* Menu.sks */,
 				73CADAC2293F760E00580330 /* Actions.sks */,
-				73CADAC4293F760E00580330 /* GameScene.swift */,
 				73CADAC6293F760E00580330 /* GameViewController.swift */,
 				73CADAC8293F760E00580330 /* Main.storyboard */,
 				73CADACB293F760F00580330 /* Assets.xcassets */,
 				73CADACD293F760F00580330 /* LaunchScreen.storyboard */,
+				04D169C9294250E0001EDDC0 /* MyScene.sks */,
+				04D169CB29425168001EDDC0 /* MyScene.swift */,
 			);
 			path = "Veggie's attack";
 			sourceTree = "<group>";
@@ -134,9 +134,9 @@
 			files = (
 				737C509A293F8D510016ACA6 /* Menu.sks in Resources */,
 				73CADACA293F760E00580330 /* Main.storyboard in Resources */,
-				73CADAC1293F760E00580330 /* GameScene.sks in Resources */,
 				73CADACC293F760F00580330 /* Assets.xcassets in Resources */,
 				73CADACF293F760F00580330 /* LaunchScreen.storyboard in Resources */,
+				04D169CA294250E0001EDDC0 /* MyScene.sks in Resources */,
 				73CADAC3293F760E00580330 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,7 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73CADAC5293F760E00580330 /* GameScene.swift in Sources */,
+				04D169CC29425168001EDDC0 /* MyScene.swift in Sources */,
 				73CADAC7293F760E00580330 /* GameViewController.swift in Sources */,
 				73CADABF293F760E00580330 /* AppDelegate.swift in Sources */,
 			);
