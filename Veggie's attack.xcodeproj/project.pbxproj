@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		737C509A293F8D510016ACA6 /* Menu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 737C5099293F8D510016ACA6 /* Menu.sks */; };
-		73C5E0F72940E49600F9CD52 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5E0F62940E49600F9CD52 /* Menu.swift */; };
 		73CADABF293F760E00580330 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CADABE293F760E00580330 /* AppDelegate.swift */; };
 		73CADAC1293F760E00580330 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 73CADAC0293F760E00580330 /* GameScene.sks */; };
 		73CADAC3293F760E00580330 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 73CADAC2293F760E00580330 /* Actions.sks */; };
@@ -21,7 +20,6 @@
 
 /* Begin PBXFileReference section */
 		737C5099293F8D510016ACA6 /* Menu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Menu.sks; sourceTree = "<group>"; };
-		73C5E0F62940E49600F9CD52 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		73CADABB293F760E00580330 /* Veggie's attack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Veggie's attack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		73CADABE293F760E00580330 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		73CADAC0293F760E00580330 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -47,7 +45,6 @@
 		73CADAB2293F760E00580330 = {
 			isa = PBXGroup;
 			children = (
-				73C5E0F62940E49600F9CD52 /* Menu.swift */,
 				73CADABD293F760E00580330 /* Veggie's attack */,
 				73CADABC293F760E00580330 /* Products */,
 			);
@@ -153,7 +150,6 @@
 			files = (
 				73CADAC5293F760E00580330 /* GameScene.swift in Sources */,
 				73CADAC7293F760E00580330 /* GameViewController.swift in Sources */,
-				73C5E0F72940E49600F9CD52 /* Menu.swift in Sources */,
 				73CADABF293F760E00580330 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
