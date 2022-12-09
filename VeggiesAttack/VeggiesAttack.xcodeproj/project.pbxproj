@@ -21,6 +21,7 @@
 		0466079629427D1100CBB6BB /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466079529427D1000CBB6BB /* Wave.swift */; };
 		0466079829427D2400CBB6BB /* Bundle-Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466079729427D2400CBB6BB /* Bundle-Decoding.swift */; };
 		0466079C29427F1C00CBB6BB /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0466079B29427F1C00CBB6BB /* MyParticle.sks */; };
+		729C49A929436BC900E2F45D /* EnemyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729C49A829436BC900E2F45D /* EnemyNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		0466079529427D1000CBB6BB /* Wave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 		0466079729427D2400CBB6BB /* Bundle-Decoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle-Decoding.swift"; sourceTree = "<group>"; };
 		0466079B29427F1C00CBB6BB /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
+		729C49A829436BC900E2F45D /* EnemyNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 		0466079A29427DD500CBB6BB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				729C49A829436BC900E2F45D /* EnemyNode.swift */,
 				0466079329427D0A00CBB6BB /* EnemyType.swift */,
 				0466079529427D1000CBB6BB /* Wave.swift */,
 				0466079729427D2400CBB6BB /* Bundle-Decoding.swift */,
@@ -182,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0466079829427D2400CBB6BB /* Bundle-Decoding.swift in Sources */,
+				729C49A929436BC900E2F45D /* EnemyNode.swift in Sources */,
 				0466077F29427CAB00CBB6BB /* GameScene.swift in Sources */,
 				0466079629427D1100CBB6BB /* Wave.swift in Sources */,
 				0466078129427CAB00CBB6BB /* GameViewController.swift in Sources */,
