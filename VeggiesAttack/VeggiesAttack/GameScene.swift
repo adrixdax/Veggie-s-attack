@@ -4,7 +4,7 @@
 //
 //  Created by Michele Zurlo on 08/12/22.
 //
-
+import SwiftUI
 import SpriteKit
 import GameplayKit
 
@@ -17,12 +17,14 @@ enum CollisionType: UInt32{
 
 class GameScene: SKScene , SKPhysicsContactDelegate {
     
+    @State private var score = 0
+    
     let player = SKSpriteNode(imageNamed: "playerSanto") //OK
     let button = SKSpriteNode(imageNamed: "knob")
     
     let waves = Bundle.main.decode([Wave].self, from: "waves.json")  //OK
     let enemyTypes = Bundle.main.decode([EnemyType].self, from: "enemy-types.json") //OK
-    
+    var scoreLabel = SKLabelNode()
     var isPlayerAlive = true
     var levelNumber = 0
     var waveNumber = 0
@@ -57,7 +59,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         setupPlayer()
         setupShootButton()
         setupPause()
-        
+        setUpScoreLabel()
     }
     
     override func update(_ currentTime: TimeInterval){
@@ -125,34 +127,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        
-        
-        for touch in touches {
-            let location = touch.location(in: self)
-            if location.x < player.position.y {
-                let newPos = player.position.y+location.y
-                if newPos > frame.minY+100{
-                    player.position.y = newPos
-                    keepPlayerInBounds()
-                    keepPlayerInBoundsInY()
-                }
-                else{
-                    player.position.y = frame.minY + 100
-                }
-            } else {
-                let newPos = player.position.y-location.y
-                if newPos > frame.maxY-100{
-                    player.position.y = newPos
-                }
-                else{
-                    player.position.y = frame.maxY - 100
-                }
-            }
-        }
-         
-        
-     
-        
+
         guard let touch = touches.first else { return }
         
         let node = atPoint(touch.location(in: self))
@@ -177,7 +152,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
             // dt = 0.0
             
             keepPlayerInBounds()
-           keepPlayerInBoundsInY()
+            keepPlayerInBoundsInY()
             isPaused = true
             
         }else if node.name == "resume"{
@@ -196,22 +171,48 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
             view!.showsPhysics = true
             
         }
-        
-        guard isPlayerAlive else {return}
-        let shot = SKSpriteNode(imageNamed: "playerWeapon")
-        shot.name = "playerWeapon"
-        shot.position = player.position
-        shot.physicsBody = SKPhysicsBody(rectangleOf: shot.size)
-        shot.physicsBody?.categoryBitMask = CollisionType.playerWeapon.rawValue
-        shot.physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
-        shot.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
-        addChild(shot)
-        let movement = SKAction.move(to: CGPoint(x: 1900, y: shot.position.y), duration: 5)
-        let sequence = SKAction.sequence([movement, .removeFromParent()])
-        shot.run(sequence)
-        
+        else if node.name == "knob"{
+            
+            guard isPlayerAlive else {return}
+            let shot = SKSpriteNode(imageNamed: "playerWeapon")
+            shot.name = "playerWeapon"
+            shot.position = player.position
+            shot.physicsBody = SKPhysicsBody(rectangleOf: shot.size)
+            shot.physicsBody?.categoryBitMask = CollisionType.playerWeapon.rawValue
+            shot.physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
+            shot.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
+            addChild(shot)
+            let movement = SKAction.move(to: CGPoint(x: 1900, y: shot.position.y), duration: 5)
+            let sequence = SKAction.sequence([movement, .removeFromParent()])
+            shot.run(sequence)
+            
+        }
+        else{
+            
+            
+            for touch in touches {
+                let location = touch.location(in: self)
+                if location.y <= player.position.y{
+                    if (player.position.y - 100) < frame.minY{
+                        player.position.y = frame.minY
+                    }
+                    else{
+                        player.position.y-=100
+                    }
+                }
+                else{
+                    if (player.position.y + 100) > frame.maxY{
+                        player.position.y = frame.maxY
+                    }
+                    else{
+                        player.position.y+=100
+                    }
+                }
+                keepPlayerInBounds()
+                keepPlayerInBoundsInY()
+            }
+        }
     }
-    
     
     func didBegin(_ contact: SKPhysicsContact) {
         guard let nodeA = contact.bodyA.node else { return }
@@ -239,12 +240,21 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         }
         else if let enemy = firstNode as? EnemyNode{
             enemy.shields -= 1
-            
             if enemy.shields == 0{
                 if let explosion = SKEmitterNode(fileNamed: "Explosion"){
                     explosion.position = enemy.position
                     addChild(explosion)
                 }
+                switch enemy.type.name{
+                case "enemy1":
+                    self.score+=20
+                
+                case "enemy2":
+                    self.score+=30
+                default:
+                    self.score+=50
+                }
+                print(score)
                 enemy.removeFromParent()
             }
             if let explosion = SKEmitterNode(fileNamed: "Explosion"){
@@ -260,6 +270,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
             firstNode.removeFromParent()
             secondNode.removeFromParent()
         }
+        
     }
     
     
@@ -335,11 +346,19 @@ extension GameScene{
     }
     
     func setupShootButton(){
-        
+        button.name = "knob"
         button.position = CGPoint(x: playableRect.width/2.0 - button.frame.width/2.0 - 20.0,
                                   y: (playableRect.height/2.0 - button.frame.height/2.0 - 75.0) * -1 )
         button.zPosition = 0
         addChild(button)
+    }
+    
+    func setUpScoreLabel(){
+        scoreLabel.text = "\(score)"
+        scoreLabel.position = CGPoint(x: playableRect.width/2.0 - button.frame.width/2.0 - 20.0,
+                                      y: (playableRect.height/2.0) * -1 - button.frame.height/2.0 - 75.0 )
+        scoreLabel.zPosition = 1
+        addChild(scoreLabel)
     }
     
     func setupBackground(){
@@ -366,32 +385,23 @@ extension GameScene{
     }
     
     func keepPlayerInBounds() {
-        print("func call in bounds X")
       if player.position.x < frame.minX + player.size.width/2 {
         
         player.position.x = frame.minX + player.size.width/2
-          print("playerX minore")
-      }
+       }
         
         if player.position.x > frame.maxX - player.size.width/2 {
-            print("playerX maggiore")
-
             player.position.x = frame.maxX - player.size.width/2
         }
         
     }
     
     func keepPlayerInBoundsInY() {
-        print("func call in bounds Y")
       if player.position.y < frame.minY + player.size.width/2 {
-          print("playerY minore")
-
         player.position.y = frame.minY + player.size.width/2
       }
     
         if player.position.y > frame.maxY - player.size.width/2 {
-            print("playerY maggiore")
-
           player.position.y = frame.maxY - player.size.width/2
         }
       
