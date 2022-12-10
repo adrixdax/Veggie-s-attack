@@ -54,9 +54,8 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         
         setupBackground()
-        
         setupPlayer()
-    
+        setupShootButton()
         setupPause()
         
     }
@@ -88,7 +87,9 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
             }
         }
         
+       // boundCheck()
         
+    
     }
     
     func createWave() {
@@ -125,15 +126,18 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         
+        
         for touch in touches {
             let location = touch.location(in: self)
             if location.x < player.position.y {
                 let newPos = player.position.y+location.y
                 if newPos > frame.minY+100{
                     player.position.y = newPos
+                    keepPlayerInBounds()
+                    keepPlayerInBoundsInY()
                 }
                 else{
-                    player.position.y = frame.minY+100
+                    player.position.y = frame.minY + 100
                 }
             } else {
                 let newPos = player.position.y-location.y
@@ -141,10 +145,13 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
                     player.position.y = newPos
                 }
                 else{
-                    player.position.y = frame.maxY-100
+                    player.position.y = frame.maxY - 100
                 }
             }
         }
+         
+        
+     
         
         guard let touch = touches.first else { return }
         
@@ -168,6 +175,9 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
             createPanel()
             //lastUpdateTime = 0.0
             // dt = 0.0
+            
+            keepPlayerInBounds()
+           keepPlayerInBoundsInY()
             isPaused = true
             
         }else if node.name == "resume"{
@@ -345,5 +355,48 @@ extension GameScene{
         }
         
     }
+    
+    func boundCheck(){
+        let bottomLeft = CGPoint(x: playableRect.minX - player.frame.width - 300, y: playableRect.minY)
+        
+        if player.position.x <= bottomLeft.x {
+            player.position.x = bottomLeft.x
+        }
 
+    }
+    
+    func keepPlayerInBounds() {
+        print("func call in bounds X")
+      if player.position.x < frame.minX + player.size.width/2 {
+        
+        player.position.x = frame.minX + player.size.width/2
+          print("playerX minore")
+      }
+        
+        if player.position.x > frame.maxX - player.size.width/2 {
+            print("playerX maggiore")
+
+            player.position.x = frame.maxX - player.size.width/2
+        }
+        
+    }
+    
+    func keepPlayerInBoundsInY() {
+        print("func call in bounds Y")
+      if player.position.y < frame.minY + player.size.width/2 {
+          print("playerY minore")
+
+        player.position.y = frame.minY + player.size.width/2
+      }
+    
+        if player.position.y > frame.maxY - player.size.width/2 {
+            print("playerY maggiore")
+
+          player.position.y = frame.maxY - player.size.width/2
+        }
+      
+    }
+    
+
+    
 }
