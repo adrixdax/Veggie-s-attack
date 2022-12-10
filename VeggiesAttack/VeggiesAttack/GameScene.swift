@@ -29,40 +29,35 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
     var playerShields = 3
     
     let positions = Array(stride(from: -320, through: 320, by: 80))
-   
+    
+    //MARK: - pause and restart nodes
+    var pauseNode: SKSpriteNode!
+    var containerNode = SKNode()
+    
+    var playableRect: CGRect {
+        let ratio: CGFloat
+        switch UIScreen.main.nativeBounds.height {
+        case 2688, 1792, 2436:
+            ratio = 2.16
+        default:
+            ratio = 16/9
+        }
+        
+        let playableHeight = size.width / ratio
+        let playableMargin = (size.height - playableHeight) / 2.0
+        
+        return CGRect(x: 0.0, y: playableMargin, width: size.width, height: playableHeight)
+    }
+    
     override func didMove(to view: SKView) {
         physicsWorld.gravity = .zero
         physicsWorld.contactDelegate = self
         
-        //OK particles
-        if let particles = SKEmitterNode(fileNamed: "MyParticle"){
-            
-            particles.position = CGPoint(x: 1080,y: 0)
-            particles.advanceSimulationTime(60)
-            particles.zPosition = -1
-    
-            addChild(particles)
-        }
-
-        // coding the physics
-        player.name = "playerSanto"
-        player.position.x = frame.minX + 100
-       // player.position.y = frame.midY
-        player.zPosition = 1
-        addChild(player)
+        setupBackground()
         
-        //OK
-        player.physicsBody = SKPhysicsBody(texture: player.texture!, size: (player.texture!.size()))
-        player.physicsBody?.categoryBitMask = CollisionType.player.rawValue
-        player.physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
-        player.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
-        player.physicsBody?.isDynamic = false
-  
-       
-        button.position.x = frame.maxX - 100
-        button.position.y = frame.minY + 200
-        button.zPosition = 0
-        addChild(button)
+        setupPlayer()
+    
+        setupPause()
         
     }
     
@@ -74,45 +69,45 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
                 }
             }
         }
-
+        
         let activeEnemies = children.compactMap { $0 as? EnemyNode }
-
+        
         if activeEnemies.isEmpty {
             createWave()
         }
         
         for enemy in activeEnemies {
             guard frame.intersects(enemy.frame) else { continue }
-
+            
             if enemy.lastFireTime + 1 < currentTime {
                 enemy.lastFireTime = currentTime
-
+                
                 if Int.random(in: 0...6) == 0 {
                     enemy.fire()
                 }
             }
         }
-
+        
         
     }
     
     func createWave() {
         guard isPlayerAlive else { return }
-
+        
         if waveNumber == waves.count {
             levelNumber += 1
             waveNumber = 0
         }
-
+        
         let currentWave = waves[waveNumber]
         waveNumber += 1
-
+        
         let maximumEnemyType = min(enemyTypes.count, levelNumber + 1)
         let enemyType = Int.random(in: 0..<maximumEnemyType)
-
+        
         let enemyOffsetX: CGFloat = 100
         let enemyStartX = 600
-
+        
         if currentWave.enemies.isEmpty {
             for (index, position) in positions.shuffled().enumerated() {
                 let enemy = EnemyNode(type: enemyTypes[enemyType], startPosition: CGPoint(x: enemyStartX, y: position), xOffset: enemyOffsetX * CGFloat(index * 3), moveStraight: true)
@@ -130,7 +125,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         
-       for touch in touches {
+        for touch in touches {
             let location = touch.location(in: self)
             if location.x < player.position.y {
                 let newPos = player.position.y+location.y
@@ -161,13 +156,35 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
             let scene = MainMenu(size: CGSize(width: 2048, height: 1536))
             
             scene.scaleMode = .aspectFill
-        
+            
             view!.presentScene(scene,transition: .doorsOpenVertical(withDuration: 0.3))
             view!.ignoresSiblingOrder = true
             view!.showsFPS = true
             view!.showsNodeCount = true
             view!.showsPhysics = true
-
+            
+        }else if node.name == "pause"{
+            if isPaused {return}
+            createPanel()
+            //lastUpdateTime = 0.0
+            // dt = 0.0
+            isPaused = true
+            
+        }else if node.name == "resume"{
+            
+            containerNode.removeFromParent()
+            isPaused = false
+        } else if node.name == "back"{
+            let scene = MainMenu(size: CGSize(width: 2048, height: 1536))
+            
+            scene.scaleMode = .aspectFill
+            
+            view!.presentScene(scene,transition: .doorsOpenVertical(withDuration: 0.3))
+            view!.ignoresSiblingOrder = true
+            view!.showsFPS = true
+            view!.showsNodeCount = true
+            view!.showsPhysics = true
+            
         }
         
         guard isPlayerAlive else {return}
@@ -182,7 +199,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         let movement = SKAction.move(to: CGPoint(x: 1900, y: shot.position.y), duration: 5)
         let sequence = SKAction.sequence([movement, .removeFromParent()])
         shot.run(sequence)
-
+        
     }
     
     
@@ -247,4 +264,86 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         addChild(gameOver)
         
     }
+}
+
+extension GameScene{
+    
+    //MARK: - pause and restart function
+    func setupPause(){
+        pauseNode = SKSpriteNode(imageNamed: "pause")
+        pauseNode.setScale(0.3)
+        pauseNode.zPosition = 50.0
+        pauseNode.name = "pause"
+        pauseNode.position = CGPoint(x: playableRect.width/2.0 - pauseNode.frame.width/2.0 - 30.0,
+                                     y: playableRect.height/2.0 - pauseNode.frame.height/2.0 - 75.0)
+        addChild(pauseNode)
+        
+    }
+    
+    //MARK: - panel pause and restart
+    
+    func createPanel(){
+        addChild(containerNode)
+        
+        let panel = SKSpriteNode(imageNamed: "panel")
+        panel.zPosition = 60.0
+        panel.position = .zero
+        containerNode.addChild(panel)
+        
+        let resume = SKSpriteNode(imageNamed: "resume")
+        resume.zPosition = 70.0
+        resume.name = "resume"
+        resume.setScale(0.7)
+        resume.position = CGPoint(x: -panel.frame.width/2.0 + resume.frame.width*1.5, y: 0.0)
+        panel.addChild(resume)
+        
+        let back = SKSpriteNode(imageNamed: "back")
+        back.zPosition = 70.0
+        back.name = "back"
+        back.setScale(0.7)
+        back.position = CGPoint(x: panel.frame.width/2.0 - back.frame.width*1.5, y: 0.0)
+        panel.addChild(back)
+        
+    }
+    
+    func setupPlayer(){
+        
+        // coding the physics
+        player.name = "playerSanto"
+        player.position.x = frame.minX + 100
+        // player.position.y = frame.midY
+        player.zPosition = 1
+        addChild(player)
+        
+        //OK
+        player.physicsBody = SKPhysicsBody(texture: player.texture!, size: (player.texture!.size()))
+        player.physicsBody?.categoryBitMask = CollisionType.player.rawValue
+        player.physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
+        player.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
+        player.physicsBody?.isDynamic = false
+        
+    }
+    
+    func setupShootButton(){
+        
+        button.position = CGPoint(x: playableRect.width/2.0 - button.frame.width/2.0 - 20.0,
+                                  y: (playableRect.height/2.0 - button.frame.height/2.0 - 75.0) * -1 )
+        button.zPosition = 0
+        addChild(button)
+    }
+    
+    func setupBackground(){
+        
+        //OK particles
+        if let particles = SKEmitterNode(fileNamed: "MyParticle"){
+            
+            particles.position = CGPoint(x: 1080,y: 0)
+            particles.advanceSimulationTime(60)
+            particles.zPosition = -1
+            
+            addChild(particles)
+        }
+        
+    }
+
 }
