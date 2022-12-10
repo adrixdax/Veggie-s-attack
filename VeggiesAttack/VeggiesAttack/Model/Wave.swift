@@ -6,7 +6,7 @@
 //
 
 import SpriteKit
-
+//OK
 struct Wave: Codable{
     
     struct WaveEnemy: Codable{

@@ -13,7 +13,7 @@ class EnemyNode : SKSpriteNode {
     var lastFireTime: Double = 0
     var shields : Int
     
-    init(type: EnemyType,startPosition: CGPoint, xOffset: CGFloat, moveStraight: Bool){
+    init(type: EnemyType, startPosition: CGPoint, xOffset: CGFloat, moveStraight: Bool){
         self.type = type
         shields = type.shields
         
