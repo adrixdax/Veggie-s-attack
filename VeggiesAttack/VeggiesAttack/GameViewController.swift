@@ -23,7 +23,7 @@ class GameViewController: UIViewController {
                 // Present the scene
                 view.presentScene(scene)
             }
-            
+            view.preferredFramesPerSecond=120
             view.ignoresSiblingOrder = true
             
             view.showsFPS = true

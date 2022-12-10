@@ -22,6 +22,7 @@
 		0466079829427D2400CBB6BB /* Bundle-Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466079729427D2400CBB6BB /* Bundle-Decoding.swift */; };
 		0466079C29427F1C00CBB6BB /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0466079B29427F1C00CBB6BB /* MyParticle.sks */; };
 		729C49A929436BC900E2F45D /* EnemyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729C49A829436BC900E2F45D /* EnemyNode.swift */; };
+		737C085329439696007D8856 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 737C085229439696007D8856 /* Explosion.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		0466079729427D2400CBB6BB /* Bundle-Decoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle-Decoding.swift"; sourceTree = "<group>"; };
 		0466079B29427F1C00CBB6BB /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
 		729C49A829436BC900E2F45D /* EnemyNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyNode.swift; sourceTree = "<group>"; };
+		737C085229439696007D8856 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				0466077A29427CAB00CBB6BB /* GameScene.sks */,
 				0466077C29427CAB00CBB6BB /* Actions.sks */,
 				0466077E29427CAB00CBB6BB /* GameScene.swift */,
+				737C085229439696007D8856 /* Explosion.sks */,
 				0466078029427CAB00CBB6BB /* GameViewController.swift */,
 				0466078229427CAB00CBB6BB /* Main.storyboard */,
 				0466078529427CAC00CBB6BB /* Assets.xcassets */,
@@ -174,6 +177,7 @@
 				0466078929427CAC00CBB6BB /* LaunchScreen.storyboard in Resources */,
 				0466077D29427CAB00CBB6BB /* Actions.sks in Resources */,
 				0466079C29427F1C00CBB6BB /* MyParticle.sks in Resources */,
+				737C085329439696007D8856 /* Explosion.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,8 +347,9 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -371,8 +376,9 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
