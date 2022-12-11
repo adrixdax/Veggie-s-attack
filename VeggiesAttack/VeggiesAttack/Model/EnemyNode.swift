@@ -13,6 +13,9 @@ class EnemyNode : SKSpriteNode {
     var lastFireTime: Double = 0
     var shields : Int
     
+    var soundEnemyFire = SKAction.playSoundFileNamed("SWBlasterSFX")
+
+    
     init(type: EnemyType, startPosition: CGPoint, xOffset: CGFloat, moveStraight: Bool){
         self.type = type
         shields = type.shields
@@ -76,6 +79,8 @@ class EnemyNode : SKSpriteNode {
         let dy = speed * sin(adjustedRotation)
 
         weapon.physicsBody?.applyImpulse(CGVector(dx: dx, dy: dy))
+        
+        run(soundEnemyFire)
     }
     
 }

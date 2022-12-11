@@ -30,6 +30,10 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
     var waveNumber = 0
     var playerShields = 3
     
+    var soundFire = SKAction.playSoundFileNamed("throwSFX")
+
+    
+    
     let positions = Array(stride(from: -320, through: 320, by: 80))
     
     //MARK: - pause and restart nodes
@@ -60,6 +64,8 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         setupShootButton()
         setupPause()
         setUpScoreLabel()
+        
+        SKTAudio.sharedInstance().playMusic("combatMusic.mpeg")
     }
     
     override func update(_ currentTime: TimeInterval){
@@ -182,9 +188,11 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
             shot.physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
             shot.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
             addChild(shot)
+            
             let movement = SKAction.move(to: CGPoint(x: 1900, y: shot.position.y), duration: 5)
             let sequence = SKAction.sequence([movement, .removeFromParent()])
             shot.run(sequence)
+            run(soundFire)
             
         }
         else{
@@ -215,6 +223,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
+        
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
         
@@ -283,6 +292,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         let gameOver = SKSpriteNode(imageNamed: "gameOver")
         gameOver.name = "gameOver"
         addChild(gameOver)
+        SKTAudio.sharedInstance().stopBGMusic()
         
     }
 }
@@ -371,6 +381,7 @@ extension GameScene{
             particles.zPosition = -1
             
             addChild(particles)
+
         }
         
     }

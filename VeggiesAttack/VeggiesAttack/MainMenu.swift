@@ -8,16 +8,19 @@
 import SpriteKit
 
 class MainMenu: SKScene{
-   
+    
     //MARK: - Systems
     var containerNode: SKSpriteNode!
-
+    
     
     override func didMove(to view: SKView) {
         
         physicsWorld.gravity = .zero
         setupBackground()
         setupMenu()
+        
+        SKTAudio.sharedInstance().playMusic("menuMusic.mpeg")
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -33,7 +36,7 @@ class MainMenu: SKScene{
             let scene = SKScene(fileNamed: "GameScene")!
             
             scene.scaleMode = .aspectFill
-        
+            
             view!.presentScene(scene,transition: .doorsOpenVertical(withDuration: 0.3))
             view!.ignoresSiblingOrder = true
             view!.showsFPS = true
@@ -42,12 +45,24 @@ class MainMenu: SKScene{
             
         }else if node.name == "highscore" {
             setupPanel()
+            
         }else if node.name == "setting" {
             setupSetting()
             
         }else if node.name == "container" {
             containerNode.removeFromParent()
+            
+        }else if node.name == "music"{
+            let node = node as! SKSpriteNode
+            SKTAudio.musicEnabled = !SKTAudio.musicEnabled
+            node.texture = SKTexture(imageNamed: SKTAudio.musicEnabled ? "musicOn" : "musicOff")
+            
+        }else if node.name == "effect"{
+            let node = node as! SKSpriteNode
+            effectEnabled = !effectEnabled
+            node.texture = SKTexture(imageNamed: effectEnabled ? "effectOn" : "effectOff")
         }
+        
     }
     
 }
@@ -142,19 +157,23 @@ extension MainMenu{
         panel.position = .zero
         containerNode.addChild(panel)
         
-        let music = SKSpriteNode(imageNamed: "musicOn")
+        //Music
+        let music = SKSpriteNode(imageNamed: SKTAudio.musicEnabled ? "musicOn" : "musicOff")
         music.name = "music"
         music.setScale(0.7)
         music.zPosition = 25.0
         music.position = CGPoint(x: -music.frame.width - 50.0 , y: 0.0)
         panel.addChild(music)
         
-        let effect = SKSpriteNode(imageNamed: "effectOn")
+        //Sound
+        let effect = SKSpriteNode(imageNamed: effectEnabled ? "effectOn" : "effectOff")
         effect.name = "effect"
         effect.setScale(0.7)
         effect.zPosition = 25.0
         effect.position = CGPoint(x: music.frame.width + 50, y: 0.0)
         panel.addChild(effect)
+        
+
         
     }
 }
