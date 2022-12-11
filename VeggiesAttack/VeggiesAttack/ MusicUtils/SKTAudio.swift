@@ -14,8 +14,6 @@ private let SKTAudioInstance = SKTAudio()
 
 class SKTAudio{
     
-    var combatMusic: AVAudioPlayer?
-    var menuMusic: AVAudioPlayer?
     var bgMusic: AVAudioPlayer?
     var shootEffect: AVAudioPlayer?
     
