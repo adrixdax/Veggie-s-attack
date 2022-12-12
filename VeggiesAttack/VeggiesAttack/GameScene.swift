@@ -204,27 +204,27 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         else{
             
             
-            for touch in touches {
-                let location = touch.location(in: self)
-                if location.y <= player.position.y{
-                    if (player.position.y - 100) < frame.minY{
-                        player.position.y = frame.minY
-                    }
-                    else{
-                        player.position.y-=100
-                    }
-                }
-                else{
-                    if (player.position.y + 100) > frame.maxY{
-                        player.position.y = frame.maxY
-                    }
-                    else{
-                        player.position.y+=100
-                    }
-                }
+//            for touch in touches {
+//                let location = touch.location(in: self)
+//                if location.y <= player.position.y{
+//                    if (player.position.y - 100) < frame.minY{
+//                        player.position.y = frame.minY
+//                    }
+//                    else{
+//                        player.position.y-=100
+//                    }
+//                }
+//                else{
+//                    if (player.position.y + 100) > frame.maxY{
+//                        player.position.y = frame.maxY
+//                    }
+//                    else{
+//                        player.position.y+=100
+//                    }
+//                }
                 keepPlayerInBounds()
                 keepPlayerInBoundsInY()
-            }
+//            }
         }
     }
     
