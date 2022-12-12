@@ -186,7 +186,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
             guard isPlayerAlive else {return}
             let shot = SKSpriteNode(imageNamed: "playerWeapon")
             shot.name = "playerWeapon"
-            shot.position = player.position
+            shot.position = CGPoint(x: player.position.x, y: player.position.y-25)
             shot.physicsBody = SKPhysicsBody(rectangleOf: shot.size)
             shot.physicsBody?.categoryBitMask = CollisionType.playerWeapon.rawValue
             shot.physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
@@ -196,36 +196,17 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
             let movement = SKAction.move(to: CGPoint(x: 1900, y: shot.position.y), duration: 5)
             let sequence = SKAction.sequence([movement, .removeFromParent()])
             shot.run(sequence)
+            startShootAnimation(sprite: player)
             run(soundFire)
             
             print("x1: \(player.position.x), y1:\(player.position.y)")
             
         }
-        else{
             
             
-            for touch in touches {
-                let location = touch.location(in: self)
-                if location.y <= player.position.y{
-                    if (player.position.y - 100) < frame.minY{
-                        player.position.y = frame.minY
-                    }
-                    else{
-                        player.position.y-=100
-                    }
-                }
-                else{
-                    if (player.position.y + 100) > frame.maxY{
-                        player.position.y = frame.maxY
-                    }
-                    else{
-                        player.position.y+=100
-                    }
-                }
+
                 keepPlayerInBounds()
                 keepPlayerInBoundsInY()
-            }
-        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -463,6 +444,14 @@ extension GameScene{
         sprite.run(SKAction.repeatForever(idleAnimation), withKey: "spriteAnimate")
         }
     
-
+    func startShootAnimation(sprite : SKSpriteNode) {
+        let textures = [
+                SKTextureAtlas(named: sprite.name!).textureNamed("attack_1"),
+                SKTextureAtlas(named: sprite.name!).textureNamed("attack_2"),
+                SKTextureAtlas(named: sprite.name!).textureNamed("attack_3"),
+            ]
+        let idleAnimation = SKAction.animate(with: textures, timePerFrame: 0.15)
+        sprite.run(SKAction.repeat(idleAnimation, count: 1))
+        }
     
 }
