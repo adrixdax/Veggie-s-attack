@@ -39,9 +39,9 @@ class MainMenu: SKScene{
             
             view!.presentScene(scene,transition: .doorsOpenVertical(withDuration: 0.3))
             view!.ignoresSiblingOrder = true
-            view!.showsFPS = true
-            view!.showsNodeCount = true
-            view!.showsPhysics = true
+            view!.showsFPS = false
+            view!.showsNodeCount = false
+            view!.showsPhysics = false
             
         }else if node.name == "highscore" {
             setupPanel()

@@ -16,5 +16,11 @@
 		"shields": 5,
 		"speed": 200,
 		"powerUpChance": 2,
-	}
+	},
+    {
+        "name": "enemy4",
+        "shields": 8,
+        "speed": 150,
+        "powerUpChance": 1,
+    }
 ]
