@@ -17,7 +17,7 @@ enum CollisionType: UInt32{
 
 class GameScene: SKScene , SKPhysicsContactDelegate {
     
-    @State private var score = 0
+    private var score : Int = 0
     
     let player = SKSpriteNode(imageNamed: "playerSanto") //OK
     let button = SKSpriteNode(imageNamed: "knob")
@@ -31,8 +31,6 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
     var playerShields = 300
     
     var soundFire = SKAction.playSoundFileNamed("throwSFX")
-
-    
     
     let positions = Array(stride(from: -320, through: 320, by: 80))
     
@@ -64,11 +62,13 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         setupShootButton()
         setupPause()
         setUpScoreLabel()
+        setupLife()
         
         SKTAudio.sharedInstance().playMusic("combatMusic.mpeg")
     }
     
     override func update(_ currentTime: TimeInterval){
+        scoreLabel.text = "Score: \(score)"
         for child in children {
             if child.frame.maxX < 0 {
                 if !frame.intersects(child.frame) {
@@ -95,9 +95,9 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
             }
         }
         
-       // boundCheck()
+        // boundCheck()
         
-    
+        
     }
     
     func createWave() {
@@ -135,7 +135,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-
+        
         guard let touch = touches.first else { return }
         
         let node = atPoint(touch.location(in: self))
@@ -204,27 +204,27 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         else{
             
             
-//            for touch in touches {
-//                let location = touch.location(in: self)
-//                if location.y <= player.position.y{
-//                    if (player.position.y - 100) < frame.minY{
-//                        player.position.y = frame.minY
-//                    }
-//                    else{
-//                        player.position.y-=100
-//                    }
-//                }
-//                else{
-//                    if (player.position.y + 100) > frame.maxY{
-//                        player.position.y = frame.maxY
-//                    }
-//                    else{
-//                        player.position.y+=100
-//                    }
-//                }
-                keepPlayerInBounds()
-                keepPlayerInBoundsInY()
-//            }
+            //            for touch in touches {
+            //                let location = touch.location(in: self)
+            //                if location.y <= player.position.y{
+            //                    if (player.position.y - 100) < frame.minY{
+            //                        player.position.y = frame.minY
+            //                    }
+            //                    else{
+            //                        player.position.y-=100
+            //                    }
+            //                }
+            //                else{
+            //                    if (player.position.y + 100) > frame.maxY{
+            //                        player.position.y = frame.maxY
+            //                    }
+            //                    else{
+            //                        player.position.y+=100
+            //                    }
+            //                }
+            keepPlayerInBounds()
+            keepPlayerInBoundsInY()
+            //            }
         }
     }
     
@@ -233,7 +233,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         for touch in touches {
             let location = touch.location(in: self)
             
-//            player.position.x = location.x
+            //            player.position.x = location.x
             player.position.y = location.y
             
             print("x: \(player.position.x), y:\(player.position.y)")
@@ -243,7 +243,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         
         
     }
-
+    
     
     func didBegin(_ contact: SKPhysicsContact) {
         
@@ -254,6 +254,22 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         
         let firstNode = sortedNodes[0]
         let secondNode = sortedNodes[1]
+        
+        let other = contact.bodyA.categoryBitMask == CollisionType.player.rawValue ? contact.bodyB : contact.bodyA
+        
+        switch other.categoryBitMask{
+        case CollisionType.player.rawValue:
+            print("Enemy with player collision")
+        case CollisionType.enemy.rawValue:
+            print("Player with enemy collision")
+            
+        case CollisionType.enemyWeapon.rawValue:
+            print("Player with enemy weapon collision")
+        case CollisionType.playerWeapon.rawValue:
+            print("Player weapon")
+        default:
+            print("Default")
+        }
         
         if secondNode.name == "playerSanto"{
             guard isPlayerAlive else { return }
@@ -277,17 +293,23 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
                     explosion.position = enemy.position
                     addChild(explosion)
                 }
-                switch enemy.type.name{
-                case "enemy1":
-                    self.score+=20
                 
+                switch "\(enemy.type.name)"{
+                case "enemy1":
+                    score+=20
                 case "enemy2":
-                    self.score+=30
+                    score+=30
+                case "enemy3":
+                    score+=40
+                case "enemy4":
+                    score+=50
                 default:
-                    self.score+=50
+                    break
                 }
-                print(score)
+                
+                
                 enemy.removeFromParent()
+                
             }
             if let explosion = SKEmitterNode(fileNamed: "Explosion"){
                 explosion.position = enemy.position
@@ -389,10 +411,10 @@ extension GameScene{
     }
     
     func setUpScoreLabel(){
-        scoreLabel.text = "\(score)"
-        scoreLabel.position = CGPoint(x: playableRect.width/2.0 - button.frame.width/2.0 - 20.0,
-                                      y: (playableRect.height/2.0) * -1 - button.frame.height/2.0 - 75.0 )
-        scoreLabel.zPosition = 1
+        scoreLabel.text = "Score: \(score)"
+        scoreLabel.position = CGPoint(x: 0 ,
+                                      y: frame.maxY-200 )
+        scoreLabel.zPosition = 50.0
         addChild(scoreLabel)
     }
     
@@ -406,7 +428,7 @@ extension GameScene{
             particles.zPosition = -1
             
             addChild(particles)
-
+            
         }
         
     }
@@ -417,14 +439,14 @@ extension GameScene{
         if player.position.x <= bottomLeft.x {
             player.position.x = bottomLeft.x
         }
-
+        
     }
     
     func keepPlayerInBounds() {
-      if player.position.x < frame.minX + player.size.width/2 {
-        
-        player.position.x = frame.minX + player.size.width/2
-       }
+        if player.position.x < frame.minX + player.size.width/2 {
+            
+            player.position.x = frame.minX + player.size.width/2
+        }
         
         if player.position.x > frame.maxX - player.size.width/2 {
             player.position.x = frame.maxX - player.size.width/2
@@ -433,14 +455,14 @@ extension GameScene{
     }
     
     func keepPlayerInBoundsInY() {
-      if player.position.y < frame.minY + player.size.width/2 {
-        player.position.y = frame.minY + player.size.width/2
-      }
-    
-        if player.position.y > frame.maxY - player.size.width/2 {
-          player.position.y = frame.maxY - player.size.width/2
+        if player.position.y < frame.minY + player.size.width/2 {
+            player.position.y = frame.minY + player.size.width/2
         }
-      
+        
+        if player.position.y > frame.maxY - player.size.width/2 {
+            player.position.y = frame.maxY - player.size.width/2
+        }
+        
     }
     
     
@@ -461,8 +483,12 @@ extension GameScene{
         }
         let idleAnimation = SKAction.animate(with: textures, timePerFrame: 0.45)
         sprite.run(SKAction.repeatForever(idleAnimation), withKey: "spriteAnimate")
-        }
+    }
     
-
+    func setupLife(){
+        
+    }
+    
+    
     
 }
