@@ -97,6 +97,10 @@ class SKTAudio{
              UserDefaults.standard.set(value, forKey:  keyMusic)
             if value {
                 SKTAudio.sharedInstance().stopBGMusic()
+            } else
+                
+            {
+                SKTAudio.sharedInstance().resumeBGMusic()
             }
         }
     }
