@@ -118,7 +118,7 @@ extension MainMenu{
         let x = -panel.frame.width/2.0 + 250.0
         
         let highscoreLbl = SKLabelNode(fontNamed: "Krungthep")
-        highscoreLbl.text = "Highscore:"
+        highscoreLbl.text = "Highest score: \(UserDefaults.standard.integer(forKey: "highest") == 0 ? 0 : UserDefaults.standard.integer(forKey: "highest"))"
         highscoreLbl.horizontalAlignmentMode = .left
         highscoreLbl.fontSize = 80.0
         highscoreLbl.zPosition = 25.0
@@ -126,7 +126,7 @@ extension MainMenu{
         panel.addChild(highscoreLbl)
         
         let scoreLabel = SKLabelNode(fontNamed: "Krungthep")
-        scoreLabel.text = "Score:"
+        scoreLabel.text = "Last Match: \(UserDefaults.standard.integer(forKey: "latest") == 0 ? 0 : UserDefaults.standard.integer(forKey: "latest"))"
         scoreLabel.horizontalAlignmentMode = .left
         scoreLabel.fontSize = 80.0
         scoreLabel.zPosition = 25.0

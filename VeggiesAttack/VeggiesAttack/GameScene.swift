@@ -317,6 +317,12 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         let gameOver = SKSpriteNode(imageNamed: "gameOver")
         gameOver.name = "gameOver"
         addChild(gameOver)
+        let highest = UserDefaults.standard.integer(forKey: "highest")
+        if score>highest{
+            UserDefaults.standard.set(score, forKey: "highest")
+        }
+        UserDefaults.standard.set(score, forKey: "latest")
+        UserDefaults.standard.synchronize()
         SKTAudio.sharedInstance().stopBGMusic()
         
     }
