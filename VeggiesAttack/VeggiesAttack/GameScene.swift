@@ -140,6 +140,8 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         
         let node = atPoint(touch.location(in: self))
         
+        
+        
         if node.name == "gameOver"{
             
             guard !isPlayerAlive else {return}
@@ -196,6 +198,8 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
             shot.run(sequence)
             run(soundFire)
             
+            print("x1: \(player.position.x), y1:\(player.position.y)")
+            
         }
         else{
             
@@ -223,6 +227,23 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
             }
         }
     }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        for touch in touches {
+            let location = touch.location(in: self)
+            
+//            player.position.x = location.x
+            player.position.y = location.y
+            
+            print("x: \(player.position.x), y:\(player.position.y)")
+            
+        }
+        
+        
+        
+    }
+
     
     func didBegin(_ contact: SKPhysicsContact) {
         
