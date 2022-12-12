@@ -392,7 +392,7 @@ extension GameScene{
         button.name = "knob"
         button.position = CGPoint(x: playableRect.width/2.0 - button.frame.width/2.0 - 20.0,
                                   y: (playableRect.height/2.0 - button.frame.height/2.0 - 75.0) * -1 )
-        button.zPosition = 0
+        button.zPosition = 1
         addChild(button)
     }
     
