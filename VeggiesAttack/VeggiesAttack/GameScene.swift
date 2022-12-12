@@ -28,7 +28,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
     var isPlayerAlive = true
     var levelNumber = 0
     var waveNumber = 0
-    var playerShields = 300
+    var playerShields = 3
     
     var soundFire = SKAction.playSoundFileNamed("throwSFX")
     
@@ -37,6 +37,8 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
     //MARK: - pause and restart nodes
     var pauseNode: SKSpriteNode!
     var containerNode = SKNode()
+    
+    var lifeNodes: [SKSpriteNode] = []
     
     var playableRect: CGRect {
         let ratio: CGFloat
@@ -132,15 +134,12 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         }
     }
     
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         
         guard let touch = touches.first else { return }
         
         let node = atPoint(touch.location(in: self))
-        
-        
         
         if node.name == "gameOver"{
             
@@ -202,9 +201,9 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
             print("x1: \(player.position.x), y1:\(player.position.y)")
             
         }
-            keepPlayerInBounds()
-            keepPlayerInBoundsInY()
-        }
+        keepPlayerInBounds()
+        keepPlayerInBoundsInY()
+    }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -233,6 +232,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         let firstNode = sortedNodes[0]
         let secondNode = sortedNodes[1]
         
+        /*
         let other = contact.bodyA.categoryBitMask == CollisionType.player.rawValue ? contact.bodyB : contact.bodyA
         
         switch other.categoryBitMask{
@@ -248,6 +248,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         default:
             print("Default")
         }
+         */
         
         if secondNode.name == "playerSanto"{
             guard isPlayerAlive else { return }
@@ -257,6 +258,8 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
             }
             
             playerShields -= 1
+            
+            lifeNodes[playerShields].texture = SKTexture(imageNamed: "life-off")
             
             if playerShields == 0 {
                 gameOver()
@@ -284,7 +287,6 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
                 default:
                     break
                 }
-                
                 
                 enemy.removeFromParent()
                 
@@ -464,18 +466,41 @@ extension GameScene{
     }
     
     func setupLife(){
+        let node1 = SKSpriteNode(imageNamed: "life-on")
+        let node2 = SKSpriteNode(imageNamed: "life-on")
+        let node3 = SKSpriteNode(imageNamed: "life-on")
+        
+        setupLifePosition(node1,i: 1.0 , j: 0.0)
+        setupLifePosition(node2,i: 2.0 , j: 8.0)
+        setupLifePosition(node3,i: 3.0 , j: 16.0)
+        
+        lifeNodes.append(node1)
+        lifeNodes.append(node2)
+        lifeNodes.append(node3)
+    }
+    
+    func setupLifePosition(_ node: SKSpriteNode, i: CGFloat , j: CGFloat){
+        let width = playableRect.width
+        let height = playableRect.height
+        
+        node.setScale(0.5)
+        node.zPosition = 50.0
+       // node.position = CGPoint(x: 0, y: 0)
+        node.position = CGPoint(x: -width/2.0 + node.frame.width*i + j , y: frame.maxY - 190)
+        
+        addChild(node)
         
     }
     
     
     func startShootAnimation(sprite : SKSpriteNode) {
         let textures = [
-                SKTextureAtlas(named: sprite.name!).textureNamed("attack_1"),
-                SKTextureAtlas(named: sprite.name!).textureNamed("attack_2"),
-                SKTextureAtlas(named: sprite.name!).textureNamed("attack_3"),
-            ]
+            SKTextureAtlas(named: sprite.name!).textureNamed("attack_1"),
+            SKTextureAtlas(named: sprite.name!).textureNamed("attack_2"),
+            SKTextureAtlas(named: sprite.name!).textureNamed("attack_3"),
+        ]
         let idleAnimation = SKAction.animate(with: textures, timePerFrame: 0.15)
         sprite.run(SKAction.repeat(idleAnimation, count: 1))
-        }
+    }
     
 }
