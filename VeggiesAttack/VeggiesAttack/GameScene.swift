@@ -207,6 +207,8 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
 
                 keepPlayerInBounds()
                 keepPlayerInBoundsInY()
+//            }
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
