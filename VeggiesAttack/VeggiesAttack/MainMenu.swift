@@ -87,14 +87,14 @@ extension MainMenu{
         play.name = "startGame"
         play.setScale(0.85)
         play.zPosition = 10.0
-        play.position = CGPoint(x: size.width/2.0, y: size.height/2.0 - play.size.height + 350.0)
+        play.position = CGPoint(x: size.width/2.0 - 650, y: size.height/2.0 - play.size.height - 50.0)
         addChild(play)
         
         let highscore = SKSpriteNode(imageNamed: "highscore")
         highscore.name = "highscore"
         highscore.setScale(0.85)
         highscore.zPosition = 10.0
-        highscore.position = CGPoint(x: size.width/2.0, y: size.height/2.0 - highscore.size.height + 150.0)
+        highscore.position = CGPoint(x: size.width/2.0 + 650, y: size.height/2.0 - highscore.size.height - 50.0)
         addChild(highscore)
         
         let setting = SKSpriteNode(imageNamed: "setting")
