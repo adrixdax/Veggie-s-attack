@@ -28,7 +28,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
     var isPlayerAlive = true
     var levelNumber = 0
     var waveNumber = 0
-    var playerShields = 3
+    var playerShields = 300
     
     var soundFire = SKAction.playSoundFileNamed("throwSFX")
 
@@ -120,11 +120,13 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         if currentWave.enemies.isEmpty {
             for (index, position) in positions.shuffled().enumerated() {
                 let enemy = EnemyNode(type: enemyTypes[enemyType], startPosition: CGPoint(x: enemyStartX, y: position), xOffset: enemyOffsetX * CGFloat(index * 3), moveStraight: true)
+                startIdleAnimation(sprite: enemy)
                 addChild(enemy)
             }
         } else {
             for enemy in currentWave.enemies {
                 let node = EnemyNode(type: enemyTypes[enemyType], startPosition: CGPoint(x: enemyStartX, y: positions[enemy.position]), xOffset: enemyOffsetX * enemy.xOffset, moveStraight: enemy.moveStraight)
+                startIdleAnimation(sprite: node)
                 addChild(node)
             }
         }
@@ -353,6 +355,8 @@ extension GameScene{
         player.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
         player.physicsBody?.isDynamic = false
         
+        startIdleAnimation(sprite: player)
+        
     }
     
     func setupShootButton(){
@@ -417,6 +421,26 @@ extension GameScene{
         }
       
     }
+    
+    
+    func startIdleAnimation(sprite : SKSpriteNode) {
+        var textures: [SKTexture]
+        if (sprite is EnemyNode){
+            textures = [
+                SKTextureAtlas(named: (sprite as! EnemyNode).type.name).textureNamed((sprite as! EnemyNode).type.name+"_0"),
+                SKTextureAtlas(named: (sprite as! EnemyNode).type.name).textureNamed((sprite as! EnemyNode).type.name+"_1"),
+            ]
+        }
+        else{
+            textures = [
+                SKTextureAtlas(named: sprite.name!).textureNamed(sprite.name!+"_0"),
+                SKTextureAtlas(named: sprite.name!).textureNamed(sprite.name!+"_1"),
+                SKTextureAtlas(named: sprite.name!).textureNamed(sprite.name!+"_2"),
+            ]
+        }
+        let idleAnimation = SKAction.animate(with: textures, timePerFrame: 0.45)
+        sprite.run(SKAction.repeatForever(idleAnimation), withKey: "spriteAnimate")
+        }
     
 
     
