@@ -13,18 +13,9 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let scene = MainMenu(size: CGSize(width: 2048, height: 1536))
-        scene.scaleMode = .aspectFill
-        
         let skView = view as! SKView
-        
-        skView.ignoresSiblingOrder = true
-        skView.showsFPS = false
-        skView.showsNodeCount = false
-        skView.showsPhysics = false
-        
-        skView.presentScene(scene)
+        presentSkView(skView: skView, scene: scene)
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -37,5 +28,14 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func presentSkView(skView : SKView, scene : SKScene){
+        scene.scaleMode = .aspectFill
+        skView.ignoresSiblingOrder = true
+        skView.showsFPS = false
+        skView.showsNodeCount = false
+        skView.showsPhysics = false
+        skView.presentScene(scene)
     }
 }

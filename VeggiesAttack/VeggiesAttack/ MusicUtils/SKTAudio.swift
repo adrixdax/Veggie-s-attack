@@ -7,8 +7,6 @@
 
 import AVFoundation
 
-
-
 private let SKTAudioInstance = SKTAudio()
 
 
@@ -16,25 +14,17 @@ class SKTAudio{
     
     var bgMusic: AVAudioPlayer?
     var shootEffect: AVAudioPlayer?
-    
-//  Singleton?
-    
     static func sharedInstance() -> SKTAudio {
-        
         return SKTAudioInstance
     }
-    
     func playMusic(_ fileNamed : String){
         if !SKTAudio.musicEnabled { return }
         guard let url = Bundle.main.url(forResource: fileNamed, withExtension: nil) else { return }
-        
         do {
             bgMusic = try AVAudioPlayer(contentsOf: url)
         }   catch let error as NSError {
-            print("Error: \(error.localizedDescription)")
             bgMusic = nil
         }
-        
         if let bgMusic = bgMusic {
             bgMusic.numberOfLoops = 1
             bgMusic.prepareToPlay()
@@ -67,27 +57,20 @@ class SKTAudio{
         }
     }
     
-    
     func playSFX(_ fileNamed : String){
         guard let url = Bundle.main.url(forResource: fileNamed, withExtension: nil) else { return }
-        
         do {
             shootEffect = try AVAudioPlayer(contentsOf: url)
             
-        }   catch let error as NSError {
-            print("Error: \(error.localizedDescription)")
+        }   catch _ as NSError {
             shootEffect = nil
         }
-        
         if let shootEffect = shootEffect {
             shootEffect.numberOfLoops = 0
             shootEffect.prepareToPlay()
             shootEffect.play()
         }
     }
-    
-//    little controller for managing music in other classes
-    
     static let keyMusic = "keyMusic"
     static var musicEnabled: Bool = {
         return !UserDefaults.standard.bool(forKey:  keyMusic)
