@@ -9,9 +9,7 @@ import SpriteKit
 
 class MainMenu: SKScene{
     
-    //MARK: - Systems
     var containerNode: SKSpriteNode!
-    
     
     override func didMove(to view: SKView) {
         
@@ -67,8 +65,6 @@ class MainMenu: SKScene{
     
 }
 
-//MARK: - Configurations
-
 extension MainMenu{
     
     func setupBackground(){
@@ -105,6 +101,7 @@ extension MainMenu{
         addChild(setting)
         
     }
+    
     func setupPanel(){
         
         setupContainer()
@@ -157,7 +154,6 @@ extension MainMenu{
         panel.position = .zero
         containerNode.addChild(panel)
         
-        //Music
         let music = SKSpriteNode(imageNamed: SKTAudio.musicEnabled ? "musicOn" : "musicOff")
         music.name = "music"
         music.setScale(0.7)
@@ -165,15 +161,13 @@ extension MainMenu{
         music.position = CGPoint(x: -music.frame.width - 50.0 , y: 0.0)
         panel.addChild(music)
         
-        //Sound
+        
         let effect = SKSpriteNode(imageNamed: effectEnabled ? "effectOn" : "effectOff")
         effect.name = "effect"
         effect.setScale(0.7)
         effect.zPosition = 25.0
         effect.position = CGPoint(x: music.frame.width + 50, y: 0.0)
         panel.addChild(effect)
-        
-
         
     }
 }
