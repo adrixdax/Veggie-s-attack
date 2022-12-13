@@ -22,7 +22,7 @@ class SKTAudio{
         guard let url = Bundle.main.url(forResource: fileNamed, withExtension: nil) else { return }
         do {
             bgMusic = try AVAudioPlayer(contentsOf: url)
-        }   catch let error as NSError {
+        }   catch _ as NSError {
             bgMusic = nil
         }
         if let bgMusic = bgMusic {
