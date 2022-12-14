@@ -134,9 +134,9 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
             scene.scaleMode = .aspectFill
             view!.presentScene(scene,transition: .doorsOpenVertical(withDuration: 0.3))
             view!.ignoresSiblingOrder = true
-            view!.showsFPS = true
-            view!.showsNodeCount = true
-            view!.showsPhysics = true
+            view!.showsFPS = false
+            view!.showsNodeCount = false
+            view!.showsPhysics = false
         }else if node.name == "knob"{
             setupShot()
         }
@@ -260,7 +260,8 @@ extension GameScene{
         player.position.x = frame.minX + 100
         player.zPosition = 1
         addChild(player)
-        player.physicsBody = SKPhysicsBody(texture: player.texture!, size: (player.texture!.size()))
+        
+        player.physicsBody = SKPhysicsBody(texture: player.texture!, size: CGSize(width: player.texture!.size().width*0.7, height: player.texture!.size().width*0.7))
         player.physicsBody?.categoryBitMask = CollisionType.player.rawValue
         player.physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
         player.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
