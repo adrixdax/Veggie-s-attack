@@ -22,7 +22,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
     let button = SKSpriteNode(imageNamed: "knob")
     let waves = Bundle.main.decode([Wave].self, from: "waves.json")
     let enemyTypes = Bundle.main.decode([EnemyType].self, from: "enemy-types.json")
-    var scoreLabel = SKLabelNode()
+    var scoreLabel = SKLabelNode(fontNamed: "Pixels")
     var isPlayerAlive = true
     var levelNumber = 0
     var waveNumber = 0
@@ -278,6 +278,7 @@ extension GameScene{
     
     func setUpScoreLabel(){
         scoreLabel.text = "Score: \(score)"
+        scoreLabel.fontSize = 100.0
         scoreLabel.position = CGPoint(x: 0 , y: frame.maxY-200 )
         scoreLabel.zPosition = 50.0
         addChild(scoreLabel)
