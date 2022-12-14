@@ -46,6 +46,8 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         return CGRect(x: 0.0, y: playableMargin, width: size.width, height: playableHeight)
     }
     
+    var sogliaLifeUp = 1
+    
     override func didMove(to view: SKView) {
         physicsWorld.gravity = .zero
         physicsWorld.contactDelegate = self
@@ -59,6 +61,12 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval){
+        //soglia life up 1500-3000 (1) 3000-4500 (2)
+        if (score > 1500 * sogliaLifeUp) && playerShields < 3 {
+            lifeNodes[playerShields].texture = SKTexture(imageNamed: "life-on")
+            playerShields = playerShields + 1
+            sogliaLifeUp = sogliaLifeUp + 1
+        }
         scoreLabel.text = "Score: \(score)"
         for child in children {
             if child.frame.maxX < 0 {
@@ -187,6 +195,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
                 default:
                     break
                 }
+                                
                 enemy.removeFromParent()
             }
             if let explosion = SKEmitterNode(fileNamed: "Explosion"){
