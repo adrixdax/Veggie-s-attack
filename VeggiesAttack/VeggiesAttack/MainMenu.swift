@@ -17,7 +17,7 @@ class MainMenu: SKScene{
         setupBackground()
         setupMenu()
         
-        SKTAudio.sharedInstance().playMusic("menuMusic.mpeg")
+        SKTAudio.sharedInstance().playMusic("menuMusic.wav")
 
     }
     

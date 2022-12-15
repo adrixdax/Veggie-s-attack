@@ -55,7 +55,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         setupPause()
         setUpScoreLabel()
         setupLife()
-        SKTAudio.sharedInstance().playMusic("combatMusic.mpeg")
+        SKTAudio.sharedInstance().playMusic("combatMusic.wav")
     }
     
     override func update(_ currentTime: TimeInterval){

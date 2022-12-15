@@ -22,12 +22,12 @@
 		0466079829427D2400CBB6BB /* Bundle-Decoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466079729427D2400CBB6BB /* Bundle-Decoding.swift */; };
 		0466079C29427F1C00CBB6BB /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0466079B29427F1C00CBB6BB /* MyParticle.sks */; };
 		046BC3352944C4EF00A0AB7D /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BC3342944C4EF00A0AB7D /* MainMenu.swift */; };
+		72458B8D294B60EC007BFABB /* combatMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = 72458B8B294B60EC007BFABB /* combatMusic.wav */; };
+		72458B8E294B60EC007BFABB /* menuMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = 72458B8C294B60EC007BFABB /* menuMusic.wav */; };
 		729C49A929436BC900E2F45D /* EnemyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729C49A829436BC900E2F45D /* EnemyNode.swift */; };
 		729C49AB29456FDD00E2F45D /* SKTAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729C49AA29456FDD00E2F45D /* SKTAudio.swift */; };
 		729C49AE29457A5200E2F45D /* SKActionExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729C49AD29457A5200E2F45D /* SKActionExt.swift */; };
 		729C49B429458CFF00E2F45D /* SWBlasterSFX.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 729C49B129458CFE00E2F45D /* SWBlasterSFX.mp3 */; };
-		729C49B529458CFF00E2F45D /* combatMusic.mpeg in Resources */ = {isa = PBXBuildFile; fileRef = 729C49B229458CFE00E2F45D /* combatMusic.mpeg */; };
-		729C49B629458CFF00E2F45D /* menuMusic.mpeg in Resources */ = {isa = PBXBuildFile; fileRef = 729C49B329458CFE00E2F45D /* menuMusic.mpeg */; };
 		729C49BC2945914100E2F45D /* throwSFX.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 729C49BB2945914100E2F45D /* throwSFX.mp3 */; };
 		737C085329439696007D8856 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 737C085229439696007D8856 /* Explosion.sks */; };
 /* End PBXBuildFile section */
@@ -49,12 +49,12 @@
 		0466079729427D2400CBB6BB /* Bundle-Decoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle-Decoding.swift"; sourceTree = "<group>"; };
 		0466079B29427F1C00CBB6BB /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
 		046BC3342944C4EF00A0AB7D /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		72458B8B294B60EC007BFABB /* combatMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = combatMusic.wav; sourceTree = "<group>"; };
+		72458B8C294B60EC007BFABB /* menuMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = menuMusic.wav; sourceTree = "<group>"; };
 		729C49A829436BC900E2F45D /* EnemyNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyNode.swift; sourceTree = "<group>"; };
 		729C49AA29456FDD00E2F45D /* SKTAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTAudio.swift; sourceTree = "<group>"; };
 		729C49AD29457A5200E2F45D /* SKActionExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKActionExt.swift; sourceTree = "<group>"; };
 		729C49B129458CFE00E2F45D /* SWBlasterSFX.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SWBlasterSFX.mp3; sourceTree = "<group>"; };
-		729C49B229458CFE00E2F45D /* combatMusic.mpeg */ = {isa = PBXFileReference; lastKnownFileType = video.mpeg; path = combatMusic.mpeg; sourceTree = "<group>"; };
-		729C49B329458CFE00E2F45D /* menuMusic.mpeg */ = {isa = PBXFileReference; lastKnownFileType = video.mpeg; path = menuMusic.mpeg; sourceTree = "<group>"; };
 		729C49BB2945914100E2F45D /* throwSFX.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = throwSFX.mp3; sourceTree = "<group>"; };
 		737C085229439696007D8856 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,8 +140,8 @@
 		729C49B029458CD500E2F45D /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				729C49B229458CFE00E2F45D /* combatMusic.mpeg */,
-				729C49B329458CFE00E2F45D /* menuMusic.mpeg */,
+				72458B8B294B60EC007BFABB /* combatMusic.wav */,
+				72458B8C294B60EC007BFABB /* menuMusic.wav */,
 				729C49B129458CFE00E2F45D /* SWBlasterSFX.mp3 */,
 				729C49BB2945914100E2F45D /* throwSFX.mp3 */,
 			);
@@ -207,18 +207,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				729C49BC2945914100E2F45D /* throwSFX.mp3 in Resources */,
-				729C49B529458CFF00E2F45D /* combatMusic.mpeg in Resources */,
 				729C49B429458CFF00E2F45D /* SWBlasterSFX.mp3 in Resources */,
 				0466079029427CFD00CBB6BB /* enemy-types.json in Resources */,
 				0466078429427CAB00CBB6BB /* Main.storyboard in Resources */,
 				0466079229427D0300CBB6BB /* waves.json in Resources */,
 				0466077B29427CAB00CBB6BB /* GameScene.sks in Resources */,
+				72458B8D294B60EC007BFABB /* combatMusic.wav in Resources */,
 				0466078629427CAC00CBB6BB /* Assets.xcassets in Resources */,
-				729C49B629458CFF00E2F45D /* menuMusic.mpeg in Resources */,
 				0466078929427CAC00CBB6BB /* LaunchScreen.storyboard in Resources */,
 				0466077D29427CAB00CBB6BB /* Actions.sks in Resources */,
 				0466079C29427F1C00CBB6BB /* MyParticle.sks in Resources */,
 				737C085329439696007D8856 /* Explosion.sks in Resources */,
+				72458B8E294B60EC007BFABB /* menuMusic.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,7 +420,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Y9YTFZ35JR;
+				DEVELOPMENT_TEAM = 6C4Y67FJLQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.arcade-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -435,7 +435,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.proteina.VeggiesAttack;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ale.VeggiesAttack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
