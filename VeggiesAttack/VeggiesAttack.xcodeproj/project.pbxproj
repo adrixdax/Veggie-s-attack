@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0435145D294A192700C0D4A7 /* Krungthep.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0435145C294A192700C0D4A7 /* Krungthep.ttf */; };
+		0435145F294A1AFD00C0D4A7 /* Pixels.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0435145E294A1AFD00C0D4A7 /* Pixels.ttf */; };
 		0466077929427CAB00CBB6BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466077829427CAB00CBB6BB /* AppDelegate.swift */; };
 		0466077B29427CAB00CBB6BB /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0466077A29427CAB00CBB6BB /* GameScene.sks */; };
 		0466077D29427CAB00CBB6BB /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0466077C29427CAB00CBB6BB /* Actions.sks */; };
@@ -33,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0435145C294A192700C0D4A7 /* Krungthep.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Krungthep.ttf; sourceTree = "<group>"; };
+		0435145E294A1AFD00C0D4A7 /* Pixels.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pixels.ttf; sourceTree = "<group>"; };
 		0466077529427CAB00CBB6BB /* VeggiesAttack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VeggiesAttack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0466077829427CAB00CBB6BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0466077A29427CAB00CBB6BB /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -70,6 +74,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04351454294A12E800C0D4A7 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				0435145E294A1AFD00C0D4A7 /* Pixels.ttf */,
+				0435145C294A192700C0D4A7 /* Krungthep.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		0466076C29427CAB00CBB6BB = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +102,7 @@
 		0466077729427CAB00CBB6BB /* VeggiesAttack */ = {
 			isa = PBXGroup;
 			children = (
+				04351454294A12E800C0D4A7 /* Font */,
 				729C49B029458CD500E2F45D /* Sound */,
 				729C49AC29457A0500E2F45D /*  MusicUtils */,
 				0466079A29427DD500CBB6BB /* Model */,
@@ -207,7 +221,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				729C49BC2945914100E2F45D /* throwSFX.mp3 in Resources */,
+				729C49B529458CFF00E2F45D /* combatMusic.mpeg in Resources */,
+				0435145F294A1AFD00C0D4A7 /* Pixels.ttf in Resources */,
 				729C49B429458CFF00E2F45D /* SWBlasterSFX.mp3 in Resources */,
+				0435145D294A192700C0D4A7 /* Krungthep.ttf in Resources */,
 				0466079029427CFD00CBB6BB /* enemy-types.json in Resources */,
 				0466078429427CAB00CBB6BB /* Main.storyboard in Resources */,
 				0466079229427D0300CBB6BB /* waves.json in Resources */,
@@ -388,6 +405,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y9YTFZ35JR;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VeggiesAttack/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.arcade-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -422,6 +440,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6C4Y67FJLQ;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VeggiesAttack/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.arcade-games";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
