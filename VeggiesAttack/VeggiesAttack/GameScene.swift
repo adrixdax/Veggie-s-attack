@@ -401,7 +401,7 @@ extension GameScene{
         shot.physicsBody?.collisionBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
         shot.physicsBody?.contactTestBitMask = CollisionType.enemy.rawValue | CollisionType.enemyWeapon.rawValue
         addChild(shot)
-        let movement = SKAction.move(to: CGPoint(x: 1900, y: shot.position.y), duration: 5)
+        let movement = SKAction.move(to: CGPoint(x: 1900, y: Int(shot.position.y)+Int.random(in: -50...50)), duration: 5)
         let sequence = SKAction.sequence([movement, .removeFromParent()])
         shot.run(sequence)
         startShootAnimation(sprite: player)

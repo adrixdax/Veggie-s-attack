@@ -22,7 +22,7 @@ class EnemyNode : SKSpriteNode {
         super.init(texture: texture, color: .white, size: texture.size())
         physicsBody = SKPhysicsBody(texture: texture, size: texture.size())
         physicsBody = SKPhysicsBody(texture: texture, size: texture.size())
-        physicsBody?.categoryBitMask = CollisionType.enemy.rawValue
+        physicsBody?.categoryBitMask = CollisionType.enemy.rawValue*UInt32(0.85)
         physicsBody?.collisionBitMask = CollisionType.player.rawValue | CollisionType.playerWeapon.rawValue
         physicsBody?.contactTestBitMask = CollisionType.player.rawValue | CollisionType.playerWeapon.rawValue
         name = "enemy"
