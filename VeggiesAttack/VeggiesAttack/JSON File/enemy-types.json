@@ -14,13 +14,13 @@
 	{
 		"name": "enemy3",
 		"shields": 5,
-		"speed": 200,
+		"speed": 150,
 		"powerUpChance": 2,
 	},
     {
         "name": "enemy4",
         "shields": 8,
-        "speed": 150,
+        "speed": 100,
         "powerUpChance": 1,
     }
 ]

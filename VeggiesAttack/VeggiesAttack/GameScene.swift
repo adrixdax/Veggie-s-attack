@@ -21,7 +21,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
     let player = SKSpriteNode(imageNamed: "playerSanto")
     let button = SKSpriteNode(imageNamed: "knob")
     let waves = Bundle.main.decode([Wave].self, from: "waves.json")
-    let enemyTypes = Bundle.main.decode([EnemyType].self, from: "enemy-types.json")
+    var enemyTypes = Bundle.main.decode([EnemyType].self, from: "enemy-types.json")
     var scoreLabel = SKLabelNode(fontNamed: "Pixels")
     var isPlayerAlive = true
     var levelNumber = 0
@@ -92,6 +92,14 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         waveNumber += 1
         let maximumEnemyType = min(enemyTypes.count, levelNumber + 1)
         let enemyType = Int.random(in: 0..<maximumEnemyType)
+        if (score/1000) >= 1 {
+            var cgFloat=1.0
+            let val : Int = score/1000
+            if let doubleValue = Double("1.\(val)") {
+                cgFloat = CGFloat(doubleValue)
+            }
+            self.enemyTypes[enemyType].speed *= cgFloat
+        }
         let enemyOffsetX: CGFloat = 100
         let enemyStartX = 600
         if currentWave.enemies.isEmpty {

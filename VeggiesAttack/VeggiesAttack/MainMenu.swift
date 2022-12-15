@@ -150,18 +150,18 @@ extension MainMenu{
         let highscoreLbl = SKLabelNode(fontNamed: "Pixels")
         highscoreLbl.text = "Highest score: \(UserDefaults.standard.integer(forKey: "highest") == 0 ? 0 : UserDefaults.standard.integer(forKey: "highest"))"
         highscoreLbl.horizontalAlignmentMode = .left
-        highscoreLbl.fontSize = 150.0
+        highscoreLbl.fontSize = 130.0
         highscoreLbl.zPosition = 25.0
-        highscoreLbl.position = CGPoint(x: x, y: highscoreLbl.frame.height/2.0 - 30.0)
+        highscoreLbl.position = CGPoint(x: x, y: highscoreLbl.frame.height/2.0)
         panel.addChild(highscoreLbl)
         
         let scoreLabel = SKLabelNode(fontNamed: "Pixels")
         
         scoreLabel.text = "Last Match: \(UserDefaults.standard.integer(forKey: "latest") == 0 ? 0 : UserDefaults.standard.integer(forKey: "latest"))"
         scoreLabel.horizontalAlignmentMode = .left
-        scoreLabel.fontSize = 150.0
+        scoreLabel.fontSize = 130.0
         scoreLabel.zPosition = 25.0
-        scoreLabel.position = CGPoint(x: x, y: -scoreLabel.frame.height - 30.0)
+        scoreLabel.position = CGPoint(x: x, y: -scoreLabel.frame.height-17.5)
         panel.addChild(scoreLabel)
         
         for family in UIFont.familyNames.sorted(){
