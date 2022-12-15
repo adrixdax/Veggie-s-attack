@@ -26,6 +26,7 @@
 		046BC3352944C4EF00A0AB7D /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046BC3342944C4EF00A0AB7D /* MainMenu.swift */; };
 		72458B8D294B60EC007BFABB /* combatMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = 72458B8B294B60EC007BFABB /* combatMusic.wav */; };
 		72458B8E294B60EC007BFABB /* menuMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = 72458B8C294B60EC007BFABB /* menuMusic.wav */; };
+		72458B97294B736D007BFABB /* oneUpSFX.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 72458B96294B736D007BFABB /* oneUpSFX.m4a */; };
 		729C49A929436BC900E2F45D /* EnemyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729C49A829436BC900E2F45D /* EnemyNode.swift */; };
 		729C49AB29456FDD00E2F45D /* SKTAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729C49AA29456FDD00E2F45D /* SKTAudio.swift */; };
 		729C49AE29457A5200E2F45D /* SKActionExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729C49AD29457A5200E2F45D /* SKActionExt.swift */; };
@@ -55,6 +56,7 @@
 		046BC3342944C4EF00A0AB7D /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		72458B8B294B60EC007BFABB /* combatMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = combatMusic.wav; sourceTree = "<group>"; };
 		72458B8C294B60EC007BFABB /* menuMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = menuMusic.wav; sourceTree = "<group>"; };
+		72458B96294B736D007BFABB /* oneUpSFX.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = oneUpSFX.m4a; sourceTree = "<group>"; };
 		729C49A829436BC900E2F45D /* EnemyNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyNode.swift; sourceTree = "<group>"; };
 		729C49AA29456FDD00E2F45D /* SKTAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTAudio.swift; sourceTree = "<group>"; };
 		729C49AD29457A5200E2F45D /* SKActionExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKActionExt.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			children = (
 				72458B8B294B60EC007BFABB /* combatMusic.wav */,
 				72458B8C294B60EC007BFABB /* menuMusic.wav */,
+				72458B96294B736D007BFABB /* oneUpSFX.m4a */,
 				729C49B129458CFE00E2F45D /* SWBlasterSFX.mp3 */,
 				729C49BB2945914100E2F45D /* throwSFX.mp3 */,
 			);
@@ -221,10 +224,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				729C49BC2945914100E2F45D /* throwSFX.mp3 in Resources */,
-				729C49B529458CFF00E2F45D /* combatMusic.mpeg in Resources */,
 				0435145F294A1AFD00C0D4A7 /* Pixels.ttf in Resources */,
 				729C49B429458CFF00E2F45D /* SWBlasterSFX.mp3 in Resources */,
 				0435145D294A192700C0D4A7 /* Krungthep.ttf in Resources */,
+				72458B97294B736D007BFABB /* oneUpSFX.m4a in Resources */,
 				0466079029427CFD00CBB6BB /* enemy-types.json in Resources */,
 				0466078429427CAB00CBB6BB /* Main.storyboard in Resources */,
 				0466079229427D0300CBB6BB /* waves.json in Resources */,

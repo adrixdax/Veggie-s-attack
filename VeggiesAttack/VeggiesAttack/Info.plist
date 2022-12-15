@@ -4,10 +4,6 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-<<<<<<< HEAD
-=======
-		<string>Krungthep.ttf</string>
->>>>>>> main
 		<string>Pixels.ttf</string>
 	</array>
 </dict>

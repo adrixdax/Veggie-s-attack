@@ -18,16 +18,20 @@ enum CollisionType: UInt32{
 class GameScene: SKScene , SKPhysicsContactDelegate {
     
     private var score : Int = 0
+    private var updateTime : Double = 0
     let player = SKSpriteNode(imageNamed: "playerSanto")
     let button = SKSpriteNode(imageNamed: "knob")
     let waves = Bundle.main.decode([Wave].self, from: "waves.json")
     var enemyTypes = Bundle.main.decode([EnemyType].self, from: "enemy-types.json")
     var scoreLabel = SKLabelNode(fontNamed: "Pixels")
+    
+    let oneUp = SKSpriteNode(imageNamed: "lifeUp")
     var isPlayerAlive = true
     var levelNumber = 0
     var waveNumber = 0
     var playerShields = 3
     var soundFire = SKAction.playSoundFileNamed("throwSFX")
+    var soundOneUp = SKAction.playSoundFileNamed("oneUpSFX.m4a")
     let positions = Array(stride(from: -320, through: 320, by: 80))
     var pauseNode: SKSpriteNode!
     var containerNode = SKNode()
@@ -61,12 +65,30 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval){
+        if updateTime == 0 {
+                    updateTime = currentTime
+                }
+
+                if currentTime - updateTime > 4 {
+                    oneUp.removeFromParent()
+                    updateTime = currentTime
+                }
+            
         //soglia life up 1500-3000 (1) 3000-4500 (2)
         if (score > 1500 * sogliaLifeUp) && playerShields < 3 {
             lifeNodes[playerShields].texture = SKTexture(imageNamed: "life-on")
             playerShields = playerShields + 1
             sogliaLifeUp = sogliaLifeUp + 1
+            setOneUp()
+            run(soundOneUp)
+
+            
         }
+  
+
+                    
+
+        
         scoreLabel.text = "Score: \(score)"
         for child in children {
             if child.frame.maxX < 0 {
@@ -301,6 +323,15 @@ extension GameScene{
         scoreLabel.zPosition = 50.0
         addChild(scoreLabel)
     }
+    
+    
+    func setOneUp(){
+        oneUp.position = CGPoint(x: 0 , y: frame.maxY-300 )
+        oneUp.zPosition = 50.0
+        addChild(oneUp)
+
+    }
+    
     
     func setupBackground(){
         if let particles = SKEmitterNode(fileNamed: "MyParticle"){
