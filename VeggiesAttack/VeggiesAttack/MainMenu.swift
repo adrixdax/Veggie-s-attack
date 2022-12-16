@@ -119,19 +119,19 @@ extension MainMenu{
         play.position = CGPoint(x: size.width/2.0 - 650, y: size.height/2.0 - play.size.height - 50.0)
         addChild(play)
         
-        let highscore = SKSpriteNode(imageNamed: "highscore")
-        highscore.name = "highscore"
-        highscore.setScale(0.85)
-        highscore.zPosition = 10.0
-        highscore.position = CGPoint(x: size.width/2.0 + 650, y: size.height/2.0 - highscore.size.height - 50.0)
-        addChild(highscore)
-        
         let setting = SKSpriteNode(imageNamed: "setting")
         setting.name = "setting"
         setting.setScale(0.85)
         setting.zPosition = 10.0
-        setting.position = CGPoint(x: size.width/2.0, y: size.height/2.0 - setting.size.height - 50.0)
+        setting.position = CGPoint(x: size.width/2.0 + 650, y: size.height/2.0 - setting.size.height - 50.0)
         addChild(setting)
+        
+        let highscore = SKSpriteNode(imageNamed: "highscore")
+        highscore.name = "highscore"
+        highscore.setScale(0.85)
+        highscore.zPosition = 10.0
+        highscore.position = CGPoint(x: size.width/2.0, y: size.height/2.0 - highscore.size.height - 50.0)
+        addChild(highscore)
         
     }
     

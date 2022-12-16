@@ -26,7 +26,7 @@ class SKTAudio{
             bgMusic = nil
         }
         if let bgMusic = bgMusic {
-            bgMusic.numberOfLoops = -   1
+            bgMusic.numberOfLoops = -1
             bgMusic.prepareToPlay()
             bgMusic.play()
         }
