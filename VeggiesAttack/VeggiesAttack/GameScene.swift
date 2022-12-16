@@ -126,7 +126,12 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
             var cgFloat=1.0
             let val : Int = score/1000
             if let doubleValue = Double("1.\(val)") {
-                cgFloat = CGFloat(doubleValue)
+                if (doubleValue < 1.5){
+                    cgFloat = CGFloat(doubleValue)
+                }
+                else{
+                    cgFloat = 1.4
+                }
             }
             self.enemyTypes[enemyType].speed *= cgFloat
         }
