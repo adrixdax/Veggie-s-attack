@@ -68,12 +68,6 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         if updateTime == 0 {
                     updateTime = currentTime
                 }
-
-                if currentTime - updateTime > 4 {
-                    oneUp.removeFromParent()
-                    updateTime = currentTime
-                }
-            
         //soglia life up 1500-3000 (1) 3000-4500 (2)
         if (score > 1500 * sogliaLifeUp) && playerShields < 3 {
             lifeNodes[playerShields].texture = SKTexture(imageNamed: "life-on")
@@ -81,8 +75,12 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
             sogliaLifeUp = sogliaLifeUp + 1
             setOneUp()
             run(soundOneUp)
-
-            
+        }
+        else{
+            if currentTime - updateTime > 4 {
+                    oneUp.removeFromParent()
+                    updateTime = currentTime
+                }
         }
   
 

@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "Knob.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "new shoot button.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
