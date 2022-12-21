@@ -23,7 +23,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
     let button = SKSpriteNode(imageNamed: "knob")
     let waves = Bundle.main.decode([Wave].self, from: "waves.json")
     var enemyTypes = Bundle.main.decode([EnemyType].self, from: "enemy-types.json")
-    var scoreLabel = SKLabelNode(fontNamed: "Pixels")
+    var scoreLabel = SKLabelNode(fontNamed: "Essentle4")
     
     let oneUp = SKSpriteNode(imageNamed: "lifeUp")
     var isPlayerAlive = true
@@ -76,6 +76,9 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
             setOneUp()
             run(soundOneUp)
         }
+        else if (score > 1500 * sogliaLifeUp) && playerShields == 3 {
+            sogliaLifeUp = sogliaLifeUp + 1
+        }
         else{
             if currentTime - updateTime > 4 {
                     oneUp.removeFromParent()
@@ -87,7 +90,7 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
                     
 
         
-        scoreLabel.text = "Score: \(score)"
+        scoreLabel.text = "Score: \(score)".uppercased()
         for child in children {
             if child.frame.maxX < 0 {
                 if !frame.intersects(child.frame) {
@@ -123,15 +126,20 @@ class GameScene: SKScene , SKPhysicsContactDelegate {
         if (score/1000) >= 1 {
             var cgFloat=1.0
             let val : Int = score/1000
-            if let doubleValue = Double("1.\(val)") {
-                if (doubleValue < 1.5){
+            if var doubleValue = Double("1.\(val)") {
+                if (doubleValue < 1.3){
+                    print("Double value\(doubleValue)")
                     cgFloat = CGFloat(doubleValue)
                 }
                 else{
-                    cgFloat = 1.4
+                    cgFloat = 1.0
+                    doubleValue = 0
+                    print("Double value else\(doubleValue)")
                 }
             }
-            self.enemyTypes[enemyType].speed *= cgFloat
+            if self.enemyTypes[enemyType].speed < 2000 {
+                self.enemyTypes[enemyType].speed *= cgFloat
+            }
         }
         let enemyOffsetX: CGFloat = 100
         let enemyStartX = 600
@@ -321,7 +329,7 @@ extension GameScene{
     
     func setUpScoreLabel(){
         scoreLabel.text = "Score: \(score)"
-        scoreLabel.fontSize = 100.0
+        scoreLabel.fontSize = 50.0
         scoreLabel.position = CGPoint(x: 0 , y: frame.maxY-200 )
         scoreLabel.zPosition = 50.0
         addChild(scoreLabel)

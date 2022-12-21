@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0408C0E22953409D00FC036E /* Baskic8.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0408C0DF2953409D00FC036E /* Baskic8.otf */; };
+		0408C0E32953409D00FC036E /* Essentle4.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0408C0E02953409D00FC036E /* Essentle4.otf */; };
+		0408C0E42953409D00FC036E /* Wongdongs.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0408C0E12953409D00FC036E /* Wongdongs.otf */; };
 		0435145D294A192700C0D4A7 /* Krungthep.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0435145C294A192700C0D4A7 /* Krungthep.ttf */; };
 		0435145F294A1AFD00C0D4A7 /* Pixels.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0435145E294A1AFD00C0D4A7 /* Pixels.ttf */; };
 		0466077929427CAB00CBB6BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466077829427CAB00CBB6BB /* AppDelegate.swift */; };
@@ -36,6 +39,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0408C0DF2953409D00FC036E /* Baskic8.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Baskic8.otf; sourceTree = "<group>"; };
+		0408C0E02953409D00FC036E /* Essentle4.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Essentle4.otf; sourceTree = "<group>"; };
+		0408C0E12953409D00FC036E /* Wongdongs.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Wongdongs.otf; sourceTree = "<group>"; };
 		0435145C294A192700C0D4A7 /* Krungthep.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Krungthep.ttf; sourceTree = "<group>"; };
 		0435145E294A1AFD00C0D4A7 /* Pixels.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pixels.ttf; sourceTree = "<group>"; };
 		0466077529427CAB00CBB6BB /* VeggiesAttack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VeggiesAttack.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +85,9 @@
 		04351454294A12E800C0D4A7 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				0408C0DF2953409D00FC036E /* Baskic8.otf */,
+				0408C0E02953409D00FC036E /* Essentle4.otf */,
+				0408C0E12953409D00FC036E /* Wongdongs.otf */,
 				0435145E294A1AFD00C0D4A7 /* Pixels.ttf */,
 				0435145C294A192700C0D4A7 /* Krungthep.ttf */,
 			);
@@ -224,8 +233,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				729C49BC2945914100E2F45D /* throwSFX.mp3 in Resources */,
+				0408C0E42953409D00FC036E /* Wongdongs.otf in Resources */,
 				0435145F294A1AFD00C0D4A7 /* Pixels.ttf in Resources */,
 				729C49B429458CFF00E2F45D /* SWBlasterSFX.mp3 in Resources */,
+				0408C0E32953409D00FC036E /* Essentle4.otf in Resources */,
 				0435145D294A192700C0D4A7 /* Krungthep.ttf in Resources */,
 				72458B97294B736D007BFABB /* oneUpSFX.m4a in Resources */,
 				0466079029427CFD00CBB6BB /* enemy-types.json in Resources */,
@@ -236,6 +247,7 @@
 				0466078629427CAC00CBB6BB /* Assets.xcassets in Resources */,
 				0466078929427CAC00CBB6BB /* LaunchScreen.storyboard in Resources */,
 				0466077D29427CAB00CBB6BB /* Actions.sks in Resources */,
+				0408C0E22953409D00FC036E /* Baskic8.otf in Resources */,
 				0466079C29427F1C00CBB6BB /* MyParticle.sks in Resources */,
 				737C085329439696007D8856 /* Explosion.sks in Resources */,
 				72458B8E294B60EC007BFABB /* menuMusic.wav in Resources */,
